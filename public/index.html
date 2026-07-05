@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./src/output.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="bg-white w-screen h-screen  flex flex-col gap-6 justify-start items-center p-5 xs:w-120 xs:m-auto">
+        <h1 class="text-center m-25 text-5xl text-slate-300">WildCodeSmith</h1>
+        <div class="flex flex-row   gap-3 bg-slate-200 rounded-xl p-0.5 text-2xl mx-10 w-full">
+            <button class="bg-white px-8 py-2 rounded-xl w-full cursor-pointer" id="signInBtn">Sign In</button>
+            <button class=" bg-slate-200 px-8 py-2 rounded-xl w-full cursor-pointer" id="signUpBtn">Sign Up</button>
+        </div>
+
+        <!-- sign-in -->
+
+        <form action="" class="flex flex-col gap-7 w-full   " id="signInForm">
+            <input type="text" name="userName" id="userName" placeholder="userName"
+                class="border px-2 py-2  w-full  rounded-lg border-slate-300">
+            <input type="password" name="password" id="password" placeholder="password"
+                class="border px-2 py-2  w-full  rounded-lg border-slate-300">
+            <input type="submit" value="Sign In"
+                class="border px-2 py-2  w-full  rounded-lg border-slate-300 bg-blue-500 text-white text-xl cursor-pointer"
+                id="signInSubmitBtn">
+        </form>
+
+
+        <!-- sign-up -->
+
+        <form action="" class="flex flex-col gap-7 w-full  hidden" id="signUpForm">
+
+            <input type="text" name="fullName" id="fullName" placeholder="fullName"
+                class="border px-2 py-2  w-full  rounded-lg border-slate-300">
+            <input type="text" name="userName" id="newUserName" placeholder="userName"
+                class="border px-2 py-2  w-full  rounded-lg border-slate-300 border">
+            <input type="password" name="password" id="newPassword" placeholder="password"
+                class="border px-2 py-2  w-full  rounded-lg border-slate-300">
+            <input type="email" name="email" id="email" placeholder="email"
+                class="border px-2 py-2  w-full  rounded-lg border-slate-300">
+            <input type="submit" value="Sign Up"
+                class="border px-2 py-2  w-full  rounded-lg border-slate-300 bg-blue-500 text-white text-xl cursor-pointer"
+                id="signUpSubmitBtn">
+        </form>
+
+
+
+
+
+    </div>
+
+    </h1>
+    <script src="script.js"></script>
+</body>
+
+</html>

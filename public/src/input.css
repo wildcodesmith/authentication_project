@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+body{
+    background-color: white;
+}
+
+*{
+    box-sizing: border-box;
+}
+@theme {
+  --breakpoint-xs: 30rem;
+ 
+}
