@@ -53,4 +53,3 @@ A production-grade, full-stack client-server authentication ecosystem engineered
 
 > **Key Benefit:** This tokenized system ensures a seamless user experience. Once signed in, users can navigate directly back to the dashboard without typing their credentials repeatedly, as long as their JSON Web Token remains active and valid.
 
-# authentication_project
