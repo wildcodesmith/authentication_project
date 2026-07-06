@@ -6,6 +6,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import 'dotenv/config';
 import nodemailer from 'nodemailer'
+  
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -23,7 +24,8 @@ mongoose.connect('mongodb://localhost:27017/authenticationProject')
 import Account from './model/Account.js'
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+const baseURL = process.env.BASE_URL || `http://localhost:${port}`
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -152,7 +154,7 @@ app.post('/signUp', async (req, res) => {
       const userAccount = await Account.create(newUser);
 
       const tempToken = jwt.sign({ userId: userAccount._id }, process.env.MASTERKEY, { expiresIn: '15m' })
-      const verificationLink = `http://localhost:3000/verify?token=${tempToken}`
+      const verificationLink = `${baseURL}/verify?token=${tempToken}`
 
       const mailOptions = {
         from: process.env.EMAIL_ADDRESS,
