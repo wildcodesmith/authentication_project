@@ -6,6 +6,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import 'dotenv/config';
 import nodemailer from 'nodemailer'
+ 
   
 
 const transporter = nodemailer.createTransport({
@@ -28,6 +29,8 @@ const port = process.env.PORT || 3000;
 const baseURL = process.env.BASE_URL || `http://localhost:${port}`
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+ 
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true }))
@@ -56,12 +59,13 @@ function verifyToken(req, res, next) {
 
 app.get('/dashboard', (req, res) => {
   res.sendFile(path.join(__dirname, 'private-user-files/signed-in.html'))
+  // res.render('index', {fullName: userFetched.fullName});
 })
 
 
 app.get('/api/user-data', verifyToken, async (req, res) => {
   const userFetched = await Account.findById(req.user.userId)
-  res.json({ message: 'sucess', fullName: userFetched.fullName })
+  res.json({ message: 'success', fullName: userFetched.fullName })
 })
 
 

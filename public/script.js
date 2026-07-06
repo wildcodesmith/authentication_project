@@ -16,6 +16,48 @@ const email = document.querySelector('#email')
 
 
 
+function showToast(message) {
+  const toast = document.getElementById('toast-notification');
+  
+ 
+  toast.innerText = message;
+  
+ 
+  toast.style.display = 'block';
+  setTimeout(() => {
+    toast.style.opacity = '1';
+  }, 10); 
+ 
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    setTimeout(() => {
+      toast.style.display = 'none';
+    }, 500);  
+  }, 4000);
+}
+    
+
+
+function showWarning(message) {
+  const toast = document.getElementById('warning-notification');
+  
+ 
+  toast.innerText = message;
+  
+ 
+  toast.style.display = 'block';
+  setTimeout(() => {
+    toast.style.opacity = '1';
+  }, 10); 
+ 
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    setTimeout(() => {
+      toast.style.display = 'none';
+    }, 500);  
+  }, 4000);
+}
+
 //  button-toggle
 signInBtn.addEventListener('click', () => {
     signInForm.classList.remove('hidden');
@@ -48,11 +90,14 @@ signInSubmitBtn.addEventListener('click', (e) => {
         if (!signInUserName.value) {
             signInUserName.classList.remove('border-slate-300')
             signInUserName.classList.add('border-red-600')
+            showWarning("Enter username")
             return;
         }
         if (!signInPassword.value) {
             signInPassword.classList.remove('border-slate-300')
             signInPassword.classList.add('border-red-600')
+            showWarning("Enter password")
+
             return;
         }
         async function sendInfo() {
@@ -72,6 +117,7 @@ signInSubmitBtn.addEventListener('click', (e) => {
                 window.location.href = response.redirect;
 
             } else {
+                showWarning(response.error)
                 signInUserName.classList.remove('border-slate-300')
                 signInUserName.classList.add('border-red-600')
                 signInPassword.classList.remove('border-slate-300')
@@ -111,21 +157,29 @@ signUpSubmitBtn.addEventListener('click', (e) => {
         if (!fullName.value) {
             fullName.classList.remove('border-slate-300')
             fullName.classList.add('border-red-600')
+            showWarning("Enter fullname")
+
             return;
         }
         if (!newUserName.value) {
             newUserName.classList.remove('border-slate-300')
             newUserName.classList.add('border-red-600')
+            showWarning("Enter username")
+
             return;
         }
         if (!newPassword.value) {
             newPassword.classList.remove('border-slate-300')
             newPassword.classList.add('border-red-600')
+            showWarning("Enter password")
+
             return;
         }
         if (!email.value) {
             email.classList.remove('border-slate-300')
             email.classList.add('border-red-600')
+            showWarning("Enter email")
+
             return;
         }
 
@@ -145,7 +199,7 @@ signUpSubmitBtn.addEventListener('click', (e) => {
             let response = await data.json();
             if (data.ok) {
                 console.log(response)
-                alert(response.message)
+           showToast(response.message)
 
 
                 signUpSubmitBtn.value = 'Sign Up';
@@ -156,7 +210,9 @@ signUpSubmitBtn.addEventListener('click', (e) => {
                 email.value = '';
 
             } else {
-                console.log(response)
+                
+                showWarning(response.error)
+                console.log(response.error)
                 if (response.status == 409) {
                     newUserName.classList.remove('border-slate-300')
                     newUserName.classList.add('border-red-600')

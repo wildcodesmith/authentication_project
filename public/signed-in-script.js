@@ -1,4 +1,6 @@
 const token = localStorage.getItem('myAppToken')
+const logo = document.getElementById("logo")
+const logoutButton = document.querySelector("#logoutButton")
 
 if (!token) {
     window.location.href = '/'
@@ -12,6 +14,7 @@ if (!token) {
                 }
             }
             let data = await fetch('/api/user-data', options)
+            let response = await data.json();
 
             if (!data.ok) {
                 let response = await data.json();
@@ -19,7 +22,15 @@ if (!token) {
                 window.location.href = '/'
 
             } else {
-                console.log('successful')
+          
+                let userNameDiv = document.createElement("div")
+                let fullName = (response.fullName)[0].toUpperCase() + (response.fullName).slice(1)
+                userNameDiv.innerText = `Welcome back! ${fullName}`
+                userNameDiv.classList.add("text-4xl","text-center", "text-blue-500", "font-bold")
+                logo.after(userNameDiv)
+
+                
+                
             }
 
         }
@@ -28,3 +39,9 @@ if (!token) {
         console.log('error loading dashboard')
     }
 }
+
+logoutButton.addEventListener('click' , () => {
+                    localStorage.removeItem('myAppToken')
+
+                    window.location.href = '/'
+                })
