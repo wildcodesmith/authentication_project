@@ -55,4 +55,4 @@ A production-grade, full-stack client-server authentication ecosystem engineered
 
 
 #### 🔹 Click to watch demo
-[![Watch the Demo Video](public/src/img.png)](https://drive.google.com/file/d/1zCWFrEk3CYgPCQp4PRtT3Mj_aOWT3IBO/view?usp=share_link)
+[![Watch the Demo Video](public/src/img.png)](https://drive.google.com/file/d/1zCWFrEk3CYgPCQp4PRtT3Mj_aOWT3iBO/view)
